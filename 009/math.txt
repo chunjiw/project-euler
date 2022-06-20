@@ -1,0 +1,9 @@
+a^2 + b^2 = (1000 - a - b)^2
+
+a + b = ab/1000 + 500
+
+b = (500 - a) / (1000 - a) * 1000
+
+so a < 500, and (1000 - a) has to evenly divide 1000. 
+
+so trying a = 200
