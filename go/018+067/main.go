@@ -3,7 +3,8 @@ package main
 import (
 	"bufio"
 	"fmt"
-	"os"
+	"math"
+	"net/http"
 	"strconv"
 	"strings"
 )
@@ -24,10 +25,27 @@ func text2nums(txt string) []int {
 	return nums
 }
 
+func max(arr []int) int {
+	var m int = math.MinInt
+	for _, i := range arr {
+		if i > m {
+			m = i
+		}
+	}
+	return m
+}
+
 func main() {
-	f, err := os.Open("pyramid.txt")
+	// r, err := os.Open("pyramid.txt")
+	req, err := http.NewRequest("GET", "https://projecteuler.net/project/resources/p067_triangle.txt", nil)
 	check(err)
-	scanner := bufio.NewScanner(f)
+	req.Header.Set("User-Agent", "")
+	client := &http.Client{}
+	res, err := client.Do(req)
+	check(err)
+	defer res.Body.Close()
+	r := res.Body
+	scanner := bufio.NewScanner(r)
 	var front []int
 	var newfront []int
 	if scanner.Scan() {
@@ -52,5 +70,5 @@ func main() {
 		}
 		front = newfront
 	}
-	fmt.Println(front)
+	fmt.Println(max(front))
 }
