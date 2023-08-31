@@ -1,5 +1,5 @@
 {
     "prettier.tabWidth": 4,
     "editor.tabSize": 4,
-    "julia.environmentPath": "/home/chunjiw/projects/project-euler"
+    "julia.environmentPath": "/home/chunjiw/projects/coding-exercises/project-euler"
 }
